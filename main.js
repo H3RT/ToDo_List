@@ -22,3 +22,21 @@ function addTodo(){
         todoInput.value = "";
     }
 }
+
+function createTodoItem(todo, todoIndex){
+    const todoId = "todo-"+todoIndex;
+    const todoLI = document.createElement("li");
+    const todoText = todo.text;
+    todoLI.className = "todo";
+
+    const deleteButton = todoLI.querySelector(".delete-button");
+    deleteButton.addEventListener("click", ()=>{
+        deleteTodoItem(todoIndex);
+    })
+    const checkbox = todoLI.querySelector("input");
+    checkbox.addEventListener("change", ()=>{
+        allTodos[todoIndex].completed = checkbox.checked;
+        saveTodos(); 
+    })
+   
+}
