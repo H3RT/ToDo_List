@@ -9,40 +9,67 @@
     <script src='main.js'></script>
 </head>
 <body>
+    <!-- Main wrapper for the app content -->
     <div class="wrapper">
+        
+        <!-- The form element where users can enter new tasks -->
         <form action="">
+            <!-- Input field for writing the new to-do item -->
             <input id="todo-input" type="text" placeholder="write anything and hit enter to add" autocomplete="off">
+            
+            <!-- Button to trigger the addition of a new to-do item -->
             <button id="add-button">ADD</button>
         </form>
+        
+        <!-- Unordered list (ul) to hold all the to-do items -->
         <ul id="todo-list">
+            
+            <!-- Each individual to-do item is wrapped in a <li> -->
             <li class="todo">
+                <!-- Checkbox to mark the task as completed -->
                 <input type="checkbox"  id="todo-1">
+                
+                <!-- Label for the custom checkbox design -->
                 <label class="custom-checkbox" for="todo-1">
+                    <!-- SVG for the checkmark icon inside the custom checkbox -->
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
                         <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
                     </svg>
                 </label>
+                
+                <!-- The text of the to-do item -->
                 <label for="todo-1" class="todo-text">
                     webdev project with html,css and js
                 </label>
+                
+                <!-- Button to delete the to-do item -->
                 <button class="delete-button">
+                    <!-- SVG for the delete icon (trash can) -->
                     <svg fill="var(--secondary-color)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
                         <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
                     </svg>
                 </button>
             </li>
+            
+            <!-- Another to-do item (similar structure as the first one) -->
             <li class="todo">
                 <input type="checkbox"  id="todo-2">
                 <label class="custom-checkbox" for="todo-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                    <!-- SVG for the checkmark icon inside the custom checkbox -->
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="http://www.w3.org/2000/svg" fill="#5f6368">
                         <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
                     </svg>
                 </label>
+                
+                <!-- The text of the second to-do item -->
                 <label for="todo-2" class="todo-text">
                     webdev project with html,css and js
                 </label>
+                
+                <!-- Delete button for the second to-do item -->
                 <button class="delete-button">
-                    <svg fill="var(--secondary-color)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                    <!-- SVG for the delete icon (trash can) -->
+                    <svg fill="var(--secondary-color)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="http://www.w3.org/2000/svg" fill="#5f6368">
                         <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
                     </svg>
                 </button>
