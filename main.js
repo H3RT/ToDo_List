@@ -24,6 +24,14 @@ function addTodo(){
     }
 }
 
+function updateTodoList(){
+    todoListUL.innerHTML = "";
+    allTodos.forEach((todo, todoIndex)=>{
+        todoItem = createTodoItem(todo, todoIndex);
+        todoListUL.append(todoItem);
+    })
+}
+
 function createTodoItem(todo, todoIndex){
     const todoId = "todo-"+todoIndex;
     const todoLI = document.createElement("li");
@@ -62,10 +70,18 @@ function createTodoItem(todo, todoIndex){
    
 }
 
-function updateTodoList(){
-    todoListUL.innerHTML = "";
-    allTodos.forEach((todo, todoIndex)=>{
-        todoItem = createTodoItem(todo, todoIndex);
-        todoListUL.append(todoItem);
-    })
+function deleteTodoItem(todoIndex){
+    allTodos = allTodos.filter((_, i)=> i !== todoIndex);
+    saveTodos();
+    updateTodoList();
+}
+
+function saveTodos(){
+    const todosJson = JSON.stringify(allTodos);
+    localStorage.setItem("todos", todosJson);
+}
+
+function getTodos(){
+    const todos = localStorage.getItem("todos") || "[]";
+    return JSON.parse(todos);
 }
