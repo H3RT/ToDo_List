@@ -3,6 +3,7 @@ const todoInput = document.getElementById('todo-input');
 const todoListUL = document.getElementById('todo-list');
 
 let allTodos = getTodos();
+updateTodoList();
 
 todoForm.addEventListener('submit', function(e){
     e.preventDefault();
@@ -59,4 +60,12 @@ function createTodoItem(todo, todoIndex){
     checkbox.checked = todo.completed;
     return todoLI;
    
+}
+
+function updateTodoList(){
+    todoListUL.innerHTML = "";
+    allTodos.forEach((todo, todoIndex)=>{
+        todoItem = createTodoItem(todo, todoIndex);
+        todoListUL.append(todoItem);
+    })
 }
