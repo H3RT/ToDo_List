@@ -1,15 +1,19 @@
+// Select the form, input field, and unordered list for the todo items
 const todoForm = document.querySelector('form');
 const todoInput = document.getElementById('todo-input');
 const todoListUL = document.getElementById('todo-list');
 
+// Initialize the list of all todos by loading from localStorage
 let allTodos = getTodos();
 updateTodoList();
 
+// Event listener to handle the form submission for adding a new todo
 todoForm.addEventListener('submit', function(e){
     e.preventDefault();
     addTodo();
 })
 
+// Function to add a new todo
 function addTodo(){
     const todoText = todoInput.value.trim();
     if(todoText.length > 0){
@@ -24,6 +28,7 @@ function addTodo(){
     }
 }
 
+// Function to update the displayed todo list
 function updateTodoList(){
     todoListUL.innerHTML = "";
     allTodos.forEach((todo, todoIndex)=>{
@@ -32,6 +37,7 @@ function updateTodoList(){
     })
 }
 
+// Function to create a new todo list item (li) for each todo
 function createTodoItem(todo, todoIndex){
     const todoId = "todo-"+todoIndex;
     const todoLI = document.createElement("li");
@@ -54,33 +60,39 @@ function createTodoItem(todo, todoIndex){
                 </button>
     `
 
+    // Add an event listener to handle the delete button click
     const deleteButton = todoLI.querySelector(".delete-button");
     deleteButton.addEventListener("click", ()=>{
         deleteTodoItem(todoIndex);
     })
     
+    // Add an event listener to handle checkbox change (mark todo as complete or incomplete)
     const checkbox = todoLI.querySelector("input");
     checkbox.addEventListener("change", ()=>{
         allTodos[todoIndex].completed = checkbox.checked;
         saveTodos(); 
     })
 
+    // Set the checkbox state to reflect whether the todo is completed
     checkbox.checked = todo.completed;
     return todoLI;
    
 }
 
+// Function to delete a todo item by its index
 function deleteTodoItem(todoIndex){
     allTodos = allTodos.filter((_, i)=> i !== todoIndex);
     saveTodos();
     updateTodoList();
 }
 
+// Function to save the todos array to localStorage
 function saveTodos(){
     const todosJson = JSON.stringify(allTodos);
     localStorage.setItem("todos", todosJson);
 }
 
+// Function to get the todos array from localStorage
 function getTodos(){
     const todos = localStorage.getItem("todos") || "[]";
     return JSON.parse(todos);
